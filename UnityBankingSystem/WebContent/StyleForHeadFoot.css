@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Gugi|Lato|Roboto|Sofia&display=swap');
+
+:root{
+    --primary-color:#e5df45;
+    --light-grey:#2b3032a1;
+    --primary:#45ccb8;
+    --border:#2b303218;
+    --text-color:#ff686b;
+    --roboto:"Roboto",sans-serif;
+    --gugi:"Gugi",cursive;
+    --sofia:"Sofia"cursive;
+}
+ input[type=text], input[type=password], input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus , input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.div-one {
+  padding: 16dp;
+}
+*{box-sizing: border-box}
+.formmain{
+	text-align: center;
+}
+.primary-color{
+    color:var(--primary-color);
+
+}
+.bg-primary-color{
+    background-color: var(--light-grey);  
+}
+.text-color{
+    color:var(--text-color);
+}
+.font-roboto{
+    font-family: var(--roboto);
+}
+.lightblue{
+    color: lightblue;
+}
+header{
+    background-color:var(--primary);
+    font-family: var(--roboto);
+}
+header .site-title{
+    font-family: var(--gugi);
+}
+.container .dropdown-toggle,
+.container .dropdown-item{
+    font-size: 0.7em;
+}
+.header-links a{
+    font-size:0.9em;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-nav {
+    padding:0.8em 0em;
+    color:var(--light-grey);
+}
+.navbar-nav .nav-link{
+   font-size: 0.9 em;
+   color:var(--light-grey)!important;
+}
+.navbar-nav .nav-item.nav-link{
+    padding:0 1.3em ;
+}
+
+.navbar-nav .basket-icon{
+    margin-right: 6.5rem!important;
+}
+.div-one{
+	
+}
+.submitbt {
+  background-color: var(--primary);
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submitbtbill {
+  background-color: var(--primary);
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+.submitbt:hover {
+  opacity:1;
+}
+
+.submitbtbill:hover {
+  opacity:1;
+}
+.submithome {
+	text-align:center;
+  background-color:#45ccb8;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+
+
+
+ *{box-sizing: border-box}
+
+.container {
+  padding: 16dp;
+}
+ input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+	
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.submitbt {
+	
+  background-color: #45ccb8;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+.submitbt:hover {
+  opacity:1;
+}
