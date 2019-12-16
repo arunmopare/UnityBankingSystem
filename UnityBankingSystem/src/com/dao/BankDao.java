@@ -2,6 +2,8 @@ package com.dao;
 import java.sql.*;
 import java.util.List;
 
+//import org.graalvm.compiler.lir.amd64.AMD64Unary.RMOp;
+
 import com.model.Application;
 public class BankDao {
 Connection con;
@@ -24,7 +26,31 @@ public int savedData(List<Application> lst){
 	Connection con =getConnection();
 	int i=0;
 	try {
-		ps=con.prepareStatement("insert into application values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		ps=con.prepareStatement("insert into application values(cust_id_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+		
+		//insert into application values(cust_id_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+
+		
+		//first is autoincreamental value
+		
+		ps.setString(1, r.getBranch_number());
+		ps.setString(2, r.getAccount_type());
+		ps.setString(3, r.getLast_name());
+		ps.setString(4, r.getFirst_name());
+		ps.setString(5, r.getMiddle_name());
+		ps.setString(6, r.getBirth_date());
+		ps.setString(7,"NULL");
+		ps.setString(8, r.getEmail_address());
+		ps.setLong(9, r.getMobile_number());		
+		ps.setString(10, r.getNationality());
+		ps.setString(11, r.getOccupation());
+		ps.setString(12, r.getCity());
+		ps.setString(13, r.getState());
+		ps.setString(14, r.getDistrict());
+		ps.setLong(15, r.getPin_code());
+		ps.setLong(16, r.getAadhar_number());
+		ps.setString(17, r.getPan_number());
+		
 		
 		
 //		ps.setInt(1, r.getApp_no());

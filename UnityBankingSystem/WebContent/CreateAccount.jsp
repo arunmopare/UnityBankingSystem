@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Online Store</title>
+<title>Apply For New Account</title>
 
 <!--bootstrap cdn-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -83,7 +83,7 @@
     </div>
 </header>
 
-<form action="AccountRegistrationController">
+<form action="AccountRegistrationController" method="post">
 	<div class="container">
 	<h1>Create Account</h1>
     <p>Please Fill in The Required Fields to create an Unity Bank Account.</p>
@@ -113,7 +113,7 @@
 	<label for="first_name"><b>First Name</b></label>
 	<input type="text" name="first_name" placeholder="Enter Your First Name*" required><br>
 	
-	<label for="middle_name"><b>First Name</b></label>
+	<label for="middle_name"><b>Middle Name</b></label>
 	<input type="text" name="middle_name" placeholder="Enter Your Middle Name*" required><br>
 	
 	<b>DOB</b>: <input type="date" name="birth_date"> <br>

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dao.BankDao;
 import com.model.Application;
 
 /**
@@ -58,6 +60,8 @@ public class AccountRegistrationController extends HttpServlet {
 		String s14=request.getParameter("aadhar_number");
 		String s15=request.getParameter("pan_number");
 		
+		//request.getIntHeader(name)
+		
 		Application rm=new Application();
 		
 		rm.setBranch_number(s0);
@@ -67,19 +71,26 @@ public class AccountRegistrationController extends HttpServlet {
 		rm.setMiddle_name(s4);
 		rm.setBirth_date(s5);
 		rm.setEmail_address(s6);
-		rm.setMobile_number(s7);
+		rm.setMobile_number(Long.parseLong(s7));
 		rm.setNationality(s8);
 		rm.setOccupation(s9);
 		rm.setCity(s10);
 		rm.setState(s11);
 		rm.setDistrict(s12);
-		rm.setPin_code(s13);
-		rm.setAadhar_number(s14);
+		rm.setPin_code(Long.parseLong(s13));
+		rm.setAadhar_number(Long.parseLong(s14));
 		rm.setPan_number(s15);
 		
-		List lst =new ArrayList<Application>();
+		List<Application> lst =new ArrayList<Application>();
 		lst.add(rm);
-
+		
+		BankDao rd = new BankDao();
+		PrintWriter pw = response.getWriter();
+		int i=rd.savedData(lst);
+		if(i>0)
+		{
+			pw.print("Application Submitted");
+		}
 		
 	}
 
