@@ -8,8 +8,8 @@
     --text-color:#ff686b;
     --roboto:"Roboto",sans-serif;
     --gugi:"Gugi",cursive;
-     --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
     --sofia:"Sofia"cursive;
+    --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
 }
  input[type=text], input[type=password], input[type=email] {
   width: 100%;
@@ -31,7 +31,7 @@ input[type=text]:focus, input[type=password]:focus , input[type=email]:focus {
 	text-align: center;
 }
 .primary-color{
-    color:var(--primary-color);
+    color:var(var(--bggradient));
 
 }
 .bg-primary-color{
@@ -47,9 +47,7 @@ input[type=text]:focus, input[type=password]:focus , input[type=email]:focus {
     color: lightblue;
 }
 header{
-    background: #ff512f;
-    /* fallback for old browsers */
-    background: var(--bggradient);
+    background-color:var(var(--bggradient));
     font-family: var(--roboto);
 }
 header .site-title{
@@ -84,7 +82,7 @@ header .site-title{
 	
 }
 .submitbt {
-  background-color: var(--primary);
+  background-color: var(--bggradient);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -95,9 +93,7 @@ header .site-title{
 }
 
 .submitbtbill {
-  background: #ff512f;
-    /* fallback for old browsers */
-    background: var(--bggradient);
+  background-color: var(--bggradient);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -115,9 +111,7 @@ header .site-title{
 }
 .submithome {
 	text-align:center;
-  background: #ff512f;
-    /* fallback for old browsers */
-    background: var(--bggradient);
+  background-color:var(--bggradient);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -154,18 +148,10 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-.forsel{
-	background: #ff512f;
-    /* fallback for old browsers */
-    background: var(--bggradient);
-    width: 10%;
-    
-}
+
 .submitbt {
 	
-  background: #ff512f;
-    /* fallback for old browsers */
-    background: var(--bggradient);
+  background-color:var(--bggradient);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;

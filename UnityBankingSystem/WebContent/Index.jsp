@@ -30,7 +30,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Apply Now</a>
+                            <a class="nav-link" href="CreateAccount.jsp">Apply Now</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Net Banking</a>
@@ -39,12 +39,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pages
+                                Log In
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#"></a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">Net Banking Login</a>
+                                <a class="dropdown-item" href="LogInAdmin.jsp">Admin Login</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -63,7 +63,7 @@
                         We are one of leading banks of India and our goal is to provide the Reliable and fastest Online
                         banking System to our customers.
                     </p>
-                    <button class="btn btn-light px-5 py-2">
+                    <button class="btn btn-light px-5 py-2 " onclick="window.location.href = 'CreateAccount.jsp';">
                         Create Your Free Account Now
                     </button>
                 </div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="panel text-left">
-                            <h1>Mr David Smith</h1>
+                            <h1>THE BANK OF UNITY</h1>
                             <p class="pt-4">
                                 This is a paragraph
                             </p>
@@ -157,10 +157,9 @@
             <div class="row text-left">
                 <div class="col-md-5 col-sm-5">
                     <h4 class="text-light">About us</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum maxime ea
-                        similique illum corrupti</p>
+                    <p class="text-muted">We are one of the Worlds Leading Banks</p>
                     <p class="pt-4 text-muted">Copyright ©2019 All rights reserved
-                        <span> Daily Banking</span>
+                        <span> Unity Bank</span>
                     </p>
                 </div>
                 <div class="col-md-5 col-sm-12">

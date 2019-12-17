@@ -89,7 +89,7 @@
     <p>Please Fill in The Required Fields to create an Unity Bank Account.</p>
     <hr>
 	<b>Select Account Type:-</b>	
-	<select name="account_type">
+	<select name="account_type" class="forsel">
     <option value="Saving">Saving</option>
     <option value="Salary">Salary</option>
     <option value="Credit">Credit</option>
@@ -98,7 +98,7 @@
 	<br>
 	<br>
 	<b>Select Branch:-</b>	
-	<select name="branch_name">
+	<select name="branch_name" class="forsel">
     <option value="PUNE01">PUNE01</option>
     <option value="PUNE02">PUNE02</option>
     <option value="PUNE03">PUNE03</option>
@@ -121,8 +121,15 @@
 	<b>E-mail:</b> <input type="email" name="email_address" placeholder="Enter Your Email*" required><br>
 	<br>
 	<label for="mobile_number"><b>Mobile Number</b></label>
-    <input type="text" name="mobile_number" placeholder="Enter Your Mobile Number*" required><br>
-    
+    <input type="text" name="mobile_number" placeholder="Enter Your Mobile Number*" onkeypress="isInputNumber(event)" maxlength="10" required><br>
+    <script >
+    	function isInputNumber(evt) {
+			var ch = String.fromCharCode(evt.which);
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+    </script>
     <label for="nationality"><b>Nationality</b></label>
     <input type="text" name="nationality" placeholder="Enter Your nationality*" required><br>
     
@@ -142,10 +149,10 @@
     <input type="text" name="district" placeholder="Enter Your District*" required><br>
     
     <label for="pincode"><b>PIN CODE</b></label>
-    <input type="text" name="pin_code" placeholder="Enter Your PIN CODE*" required><br>
+    <input type="text" name="pin_code" placeholder="Enter Your PIN CODE*" onkeypress="isInputNumber(event)" maxlength="6" required><br>
     
     <label for="aadhar"><b>AADHAR</b></label>
-    <input type="text" name="aadhar_number" placeholder="Enter Your AADHAR NUMBER*" required><br>
+    <input type="text" name="aadhar_number" placeholder="Enter Your AADHAR NUMBER*" onkeypress="isInputNumber(event)" maxlength="12" required><br>
     
     <label for="pan"><b>PAN</b></label>
     <input type="text" name="pan_number" placeholder="Enter Your PAN NUMBER*" required><br>

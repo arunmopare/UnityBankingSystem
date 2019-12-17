@@ -43,7 +43,11 @@ public class AccountRegistrationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String s0=request.getParameter("branch_number");
+		System.out.println("hiiii");
+		
+	
+
+		String s0=request.getParameter("branch_name");
 		String s1=request.getParameter("account_type");
 		String s2=request.getParameter("last_name");
 		String s3=request.getParameter("first_name");
@@ -59,7 +63,7 @@ public class AccountRegistrationController extends HttpServlet {
 		String s13=request.getParameter("pin_code");
 		String s14=request.getParameter("aadhar_number");
 		String s15=request.getParameter("pan_number");
-		
+
 		//request.getIntHeader(name)
 		
 		Application rm=new Application();
@@ -70,15 +74,15 @@ public class AccountRegistrationController extends HttpServlet {
 		rm.setFirst_name(s3);
 		rm.setMiddle_name(s4);
 		rm.setBirth_date(s5);
-		rm.setEmail_address(s6);
-		rm.setMobile_number(Long.parseLong(s7));
+		rm.setEmail_address(s6); 
+		rm.setMobile_number(s7);
 		rm.setNationality(s8);
 		rm.setOccupation(s9);
 		rm.setCity(s10);
 		rm.setState(s11);
 		rm.setDistrict(s12);
-		rm.setPin_code(Long.parseLong(s13));
-		rm.setAadhar_number(Long.parseLong(s14));
+		rm.setPin_code(s13);
+		rm.setAadhar_number(s14);
 		rm.setPan_number(s15);
 		
 		List<Application> lst =new ArrayList<Application>();

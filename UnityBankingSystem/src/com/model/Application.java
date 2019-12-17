@@ -8,14 +8,14 @@ public class Application {
 	private String middle_name;
 	private String birth_date;
 	private String email_address;
-	private long mobile_number;
+	private String mobile_number;
 	private String nationality;
 	private String occupation;
 	private String city;
 	private String state;
 	private String district;
-	private long pin_code;
-	private long aadhar_number;
+	private String pin_code;
+	private String aadhar_number;
 	private String pan_number;
 	public String getBranch_number() {
 		return branch_number;
@@ -59,10 +59,10 @@ public class Application {
 	public void setEmail_address(String email_address) {
 		this.email_address = email_address;
 	}
-	public long getMobile_number() {
+	public String getMobile_number() {
 		return mobile_number;
 	}
-	public void setMobile_number(long mobile_number) {
+	public void setMobile_number(String mobile_number) {
 		this.mobile_number = mobile_number;
 	}
 	public String getNationality() {
@@ -95,16 +95,16 @@ public class Application {
 	public void setDistrict(String district) {
 		this.district = district;
 	}
-	public long getPin_code() {
+	public String getPin_code() {
 		return pin_code;
 	}
-	public void setPin_code(long pin_code) {
+	public void setPin_code(String pin_code) {
 		this.pin_code = pin_code;
 	}
-	public long getAadhar_number() {
+	public String getAadhar_number() {
 		return aadhar_number;
 	}
-	public void setAadhar_number(long aadhar_number) {
+	public void setAadhar_number(String aadhar_number) {
 		this.aadhar_number = aadhar_number;
 	}
 	public String getPan_number() {
@@ -113,4 +113,5 @@ public class Application {
 	public void setPan_number(String pan_number) {
 		this.pan_number = pan_number;
 	}
-}
+
+	}
