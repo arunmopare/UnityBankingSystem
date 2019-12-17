@@ -11,6 +11,11 @@
      --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
     --sofia:"Sofia"cursive;
 }
+.admindivbtn{
+	float: "right";
+}
+
+
  input[type=text], input[type=password], input[type=email] {
   width: 100%;
   padding: 15px;

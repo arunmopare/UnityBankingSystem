@@ -1,10 +1,15 @@
 package com.dao;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.model.AdminLogin;
 
 //import org.graalvm.compiler.lir.amd64.AMD64Unary.RMOp;
 
 import com.model.Application;
+
+import oracle.jdbc.util.Login;
 public class BankDao {
 Connection con;
 PreparedStatement ps;
@@ -21,6 +26,32 @@ public Connection getConnection() {
 	}
 	return con;
 }
+
+public boolean validate(List<AdminLogin> lst){
+	getConnection();
+	boolean b=false;
+	AdminLogin ad=(AdminLogin)lst.get(0);
+	try
+	{
+		ps=con.prepareStatement("select * from pass where uname=? AND pass=?");
+		ps.setString(1,ad.getUname());
+		ps.setString(2,ad.getPass());
+		ResultSet rs=ps.executeQuery();
+		if(rs.next()){
+			System.out.println("result set");
+			b=true;
+		}
+		else
+		{
+			System.out.println("no result..");
+		}
+	}
+	catch(Exception e){
+		System.out.println(e);
+	}
+	return b;
+}
+
 public int savedData(List<Application> lst1){
 	Application r=lst1.get(0);
 	Connection con =getConnection();
@@ -29,31 +60,8 @@ public int savedData(List<Application> lst1){
 	
 	try {
 		ps=con.prepareStatement("insert into application values(seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		//ps=con.prepareStatement("insert into arun1 values(?,?)");
-		//insert into application values(seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
-
+		
 		int j=1;
-		
-//		ps.setString(2, "12");
-//		ps.setString(3, "12");
-//		ps.setString(4, "12");
-//		ps.setString(5, "12");
-//		ps.setString(6, "12");
-//		ps.setString(7,"12");
-//		
-//		ps.setString(8, "12");
-//		ps.setString(9, "12");		
-//		ps.setString(10, "12");
-//		ps.setString(11, "12");
-//		ps.setString(12, "12");
-//		ps.setString(13, "12");
-//		ps.setString(14, "12");
-//		ps.setString(15, "12");
-//		ps.setString(16, "12");
-//		ps.setString(17, "12");
-		
-		//first is autoincreamental value
-		//ps.setInt(1,1);
 		ps.setString(1, r.getBranch_number());
 		ps.setString(2, r.getAccount_type());
 		ps.setString(3, r.getLast_name());
@@ -77,31 +85,56 @@ public int savedData(List<Application> lst1){
 		con.close();
 		
 		
-//		ps.setInt(1, r.getApp_no());
-//		ps.setString(2,r.getBranch_name());
-//		ps.setString(3,r.getAccount_type());
-//		ps.setString(4,r.getSurname());
-//		ps.setString(5,r.getFirtsname());
-//		ps.setString(6,r.getMiddlename());
-//		ps.setString(7,r.getDate());
-//		ps.setString(8,r.getMother_name());
-//		ps.setString(9,r.getEmail());
-//		ps.setString(10,r.getMobile_no());
-//		ps.setString(11,r.getNationality());
-//		ps.setString(12,r.getOccupation());
-//		ps.setString(13,r.getCity());
-//		ps.setString(14,r.getState());
-//		ps.setString(15,r.getDistrict());
-//		ps.setInt(16,r.getPincode());
-//		ps.setString(17,r.getAadhar_no());
-//		ps.setInt(18,r.getPan_no());
-//		i=ps.executeUpdate();
-//		con.close();
+
 	} catch (SQLException e) {
 		
 		System.err.print(e.getMessage());;
 		e.printStackTrace();
 	}
 	return i;
+}
+public List<Application> searchData(){
+	Connection con =getConnection();
+	List<Application> l1 = new ArrayList<Application>();
+	try {
+		System.out.println("errr1");
+		ps=con.prepareStatement("select * from application" );
+		System.out.println("errr2");
+		//ps.setString(1, sno);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			System.out.println("errr3");
+			Application apl=new Application();
+			apl.setCust_id(rs.getString(1));
+			apl.setBranch_number(rs.getString(2));
+			apl.setAccount_type(rs.getString(3));
+			apl.setLast_name(rs.getString(4));
+			apl.setFirst_name(rs.getString(5));
+			apl.setMiddle_name(rs.getString(6));
+			apl.setBirth_date(rs.getString(7));
+			apl.setEmail_address(rs.getString(8));
+			apl.setMobile_number(rs.getString(9));
+			apl.setNationality(rs.getString(10));
+			apl.setOccupation(rs.getString(11));
+			apl.setCity(rs.getString(12));
+			apl.setState(rs.getString(13));
+			apl.setDistrict(rs.getString(14));
+			apl.setPin_code(rs.getString(15));
+			apl.setAadhar_number(rs.getString(16));
+			apl.setPan_number(rs.getString(17));
+			l1.add(apl);
+		
+			
+		}
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Not found");
+			System.err.print(e.getMessage());;
+			e.printStackTrace();
+			
+		}
+		return l1;
+
 }
 }

@@ -84,7 +84,7 @@
     </div>
 </header>
 
-<form action="LoginController">
+<form action="LoginController" method="post">
 <div class="container">
 	<h1>Login</h1>
     <p>Please fill in this form to LogIn.</p>
@@ -95,7 +95,8 @@
 	<label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
     <hr>
-   	<input type="submit" value="Login" class="submitbt" > 
+    <div><center><input type="submit" value="Login" class="submitbt" ></center></div>
+   	 
 </div>
 
 </form>

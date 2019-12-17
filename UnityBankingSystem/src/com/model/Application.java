@@ -1,6 +1,7 @@
 package com.model;
 
 public class Application {
+	private String cust_id;
 	private String branch_number;
 	private String account_type;
 	private String last_name;
@@ -17,6 +18,13 @@ public class Application {
 	private String pin_code;
 	private String aadhar_number;
 	private String pan_number;
+	
+	public String getCust_id() {
+		return cust_id;
+	}
+	public void setCust_id(String cust_id) {
+		this.cust_id = cust_id;
+	}
 	public String getBranch_number() {
 		return branch_number;
 	}

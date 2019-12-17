@@ -55,7 +55,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.jsp">HOME <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="Cart1.jsp"></a>
@@ -155,7 +155,7 @@
     <input type="text" name="aadhar_number" placeholder="Enter Your AADHAR NUMBER*" onkeypress="isInputNumber(event)" maxlength="12" required><br>
     
     <label for="pan"><b>PAN</b></label>
-    <input type="text" name="pan_number" placeholder="Enter Your PAN NUMBER*" required><br>
+    <input type="text" name="pan_number" placeholder="Enter Your PAN NUMBER*" maxlength="10" required><br>
 
     <hr>
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>

@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.model.Application"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -94,21 +96,65 @@
 	
 	response.setHeader("Expires","0");//proxies
 
-if(session.getAttribute("username")==null) 
-{
-	response.sendRedirect("LogInAdmin.jsp");
-}
+//if(session.getAttribute("username")==null) 
+//{
+//	response.sendRedirect("LogInAdmin.jsp");
+//}
 %>
-<h1><center> Welcome Admin @${username} </center></h1>
+<h1><center> Welcome Admin11 @${username} </center></h1>
 </main>
-<form action="LogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
-
-
-
+<form action="DispAllApplications" >
+<input type="submit" value="Show All" class="submitbt" >
 </form>
 
-
-
+<%
+	
+	if(!session.isNew()){
+	List<Application>lst=(List<Application>)session.getAttribute("data");
+	session.invalidate();
+ %>
+ 	<table border="1" align="center">
+  <tr>
+    <th><h1>Customer ID</h1></th>
+    <th><h1>BRANCH_NAME</h1></th>
+    <th><h1>ACCOUNT_TYPE</h1></th>
+    <th><h1>SURNAME</h1></th>
+    <th><h1>FIRSTNAME</h1></th>
+    <th><h1>MIDDLENAME</h1></th>
+    <th><h1>DATEOFBIRTH</h1></th>
+    <th><h1>EMAIL</h1></th>
+    <th><h1>MOBILE_NO</h1></th>
+    <th><h1>NATIONALITY</h1></th>
+    <th><h1>OCCUPATION</h1></th>
+    <th><h1>CITY</h1></th>
+    <th><h1>STATE</h1></th>
+    <th><h1>DISTRICT</h1></th>
+    <th><h1>PINCODE</h1></th>
+    <th><h1>AADHAR_NO</h1></th>
+    <th><h1>PAN_NO</h1></th>
+  </tr>
+ <%	for(Application a:lst ){ %>
+<tr>
+<td><%=a.getCust_id()%></td>
+<td><%=a.getBranch_number() %></td>
+<td><%=a.getAccount_type() %></td>
+<td><%=a.getLast_name() %></td>
+<td><%=a.getFirst_name() %></td>
+<td><%=a.getMiddle_name() %></td>
+<td><%=a.getBirth_date() %></td>
+<td><%=a.getEmail_address() %></td>
+<td><%=a.getMobile_number() %></td>
+<td><%=a.getNationality() %></td>
+<td><%=a.getOccupation() %></td>
+<td><%=a.getCity() %></td>
+<td><%=a.getState() %></td>
+<td><%=a.getDistrict() %></td>
+<td><%=a.getPin_code() %></td>
+<td><%=a.getAadhar_number() %></td>
+<td><%=a.getPan_number() %></td>
+</tr>
+</table>
+<%}%>
+<%}%>
 </body>
 </html>
