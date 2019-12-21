@@ -19,7 +19,7 @@
 <!--slider-->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<title>Admin Login</title>
+<title>NetBanking Login</title>
 </head>
 <body>
 <header>
@@ -27,12 +27,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-12 col-12">
                 <div class ="btn-group">
-                    <button class="btn border dropdown-toggle my-md-4 my-2 text-white"  data-toggle="dropdown-toggle" aria-haspopup="true"
-                    aria-expanded="false" 
-                    >INR</button>
-                    <div class="dropdown-menu text-white">
-                        <a href="#" class="dropdown-item">IND-INR</a>
-                    </div>
+                   
                 </div>
             </div>
             <div class="col-md-4 col-12 text-center">
@@ -73,20 +68,20 @@
             
 
           </nav>
-          <hr>
+		<hr>
     </div>
 </header>
 
-<form action="LoginController" method="post">
+<form action="NetBankingLoginController" method="post">
 <div class="container">
-	<h1>Login</h1>
+	<h1>Net Banking Login</h1>
     <p>Please fill in this form to LogIn.</p>
     <hr>
    	<label for="username"><b>User Name</b></label>
-	<input type="text" name="username" placeholder="Enter Admin Password" required><br>
+	<input type="text" name="net_username" placeholder="Enter NetBanking Username" required><br>
 	
 	<label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Enter Password" name="net_password" required>
     <hr>
     <div><center><input type="submit" value="Login" class="submitbt" ></center></div>
    	 

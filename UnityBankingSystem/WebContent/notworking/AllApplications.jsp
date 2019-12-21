@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.model.Application"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
 <!--slider-->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<title>Admin Login</title>
+<title>Admin Dashboard</title>
 </head>
 <body>
 <header>
@@ -59,7 +61,7 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Cart1.jsp"></a>
+                  <a class="nav-link" href="AllApplications.jsp">Display All Applications</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="Bill1.jsp"></a>
@@ -70,29 +72,90 @@
               </ul>
             </div>
 
-            
+            <!-- div class="navbar-nav">
+                <li class="nav-item border rounded-circle mx-2 search-icon">
+                    <i class="fas fa-search"></i>
+                </li>
+
+                <li class="nav-item border rounded-circle mx-2 basket-icon">
+                    <i class="fas fa-cart-plus"></i>
+                </li>
+            </div> -->
 
           </nav>
-          <hr>
     </div>
 </header>
+<main>
 
-<form action="LoginController" method="post">
-<div class="container">
-	<h1>Login</h1>
-    <p>Please fill in this form to LogIn.</p>
-    <hr>
-   	<label for="username"><b>User Name</b></label>
-	<input type="text" name="username" placeholder="Enter Admin Password" required><br>
+
+<%
 	
-	<label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-    <hr>
-    <div><center><input type="submit" value="Login" class="submitbt" ></center></div>
-   	 
-</div>
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");//http 1.1
 
+	response.setHeader("Pragma","no-cache");//http 1.1
+	
+	response.setHeader("Expires","0");//proxies
+
+//if(session.getAttribute("username")==null) 
+//{
+//	response.sendRedirect("LogInAdmin.jsp");
+//}
+%>
+<h1><center> Welcome Admin11 @${username} </center></h1>
+</main>
+<form action="DispAllApplications" >
+<input type="submit" value="Show All" class="submitbt" >
 </form>
+<%!List<Application> lst; %>
+<%
+    
+    if(!session.isNew()){
+    lst=(List<Application>)session.getAttribute("data");
+    session.invalidate();
+ %>
+    <table border="1" align="center">
+  <tr>
+    <th><h1>Customer ID</h1></th>
+    <th><h1>BRANCH_NAME</h1></th>
+    <th><h1>ACCOUNT_TYPE</h1></th>
+    <th><h1>SURNAME</h1></th>
+    <th><h1>FIRSTNAME</h1></th>
+    <th><h1>MIDDLENAME</h1></th>
+    <th><h1>DATEOFBIRTH</h1></th>
+    <th><h1>EMAIL</h1></th>
+    <th><h1>MOBILE_NO</h1></th>
+    <th><h1>NATIONALITY</h1></th>
+    <th><h1>OCCUPATION</h1></th>
+    <th><h1>CITY</h1></th>
+    <th><h1>STATE</h1></th>
+    <th><h1>DISTRICT</h1></th>
+    <th><h1>PINCODE</h1></th>
+    <th><h1>AADHAR_NO</h1></th>
+    <th><h1>PAN_NO</h1></th>
+  </tr>
+ <% for(Application a:lst ){ %>
+<tr>
+<td><%=a.getCust_id()%></td>
+<td><%=a.getBranch_number() %></td>
+<td><%=a.getAccount_type() %></td>
+<td><%=a.getLast_name() %></td>
+<td><%=a.getFirst_name() %></td>
+<td><%=a.getMiddle_name() %></td>
+<td><%=a.getBirth_date() %></td>
+<td><%=a.getEmail_address() %></td>
+<td><%=a.getMobile_number() %></td>
+<td><%=a.getNationality() %></td>
+<td><%=a.getOccupation() %></td>
+<td><%=a.getCity() %></td>
+<td><%=a.getState() %></td>
+<td><%=a.getDistrict() %></td>
+<td><%=a.getPin_code() %></td>
+<td><%=a.getAadhar_number() %></td>
+<td><%=a.getPan_number() %></td>
+</tr>
 
+<%}%>
+</table>
+<%}%> 
 </body>
 </html>

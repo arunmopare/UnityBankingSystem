@@ -19,7 +19,7 @@
 <!--slider-->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<title>Admin Login</title>
+<title>Customer Dashboard</title>
 </head>
 <body>
 <header>
@@ -59,7 +59,7 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Cart1.jsp"></a>
+                  <a class="nav-link" href="AddBenifitiory.jsp">Add Benifitiory</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="Bill1.jsp"></a>
@@ -69,28 +69,29 @@
                   </li>
               </ul>
             </div>
-
-            
-
           </nav>
           <hr>
     </div>
 </header>
+<main>
 
-<form action="LoginController" method="post">
-<div class="container">
-	<h1>Login</h1>
-    <p>Please fill in this form to LogIn.</p>
-    <hr>
-   	<label for="username"><b>User Name</b></label>
-	<input type="text" name="username" placeholder="Enter Admin Password" required><br>
+<%
 	
-	<label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-    <hr>
-    <div><center><input type="submit" value="Login" class="submitbt" ></center></div>
-   	 
-</div>
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");//http 1.1
+
+	response.setHeader("Pragma","no-cache");//http 1.1
+	
+	response.setHeader("Expires","0");//proxies
+
+if(session.getAttribute("net_banking_username")==null) 
+{
+	response.sendRedirect("NetBankingLogin.jsp");
+}
+%>
+<h4><center> Welcome  @${net_banking_username} </center></h4>
+</main>
+<form action="NetbankingLogoutController">
+<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
 
 </form>
 

@@ -43,7 +43,6 @@
             <div class="col-md4 col-12 text-right">
                 <p class="my-md-4 header-links">
                     <a href="Login.jsp"class="px-2"></a>
-                    <a href="Registration.jsp"class="px-1"></a>
 
                 </p>
             </div>
@@ -61,7 +60,7 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AllApplications.jsp">Display All Applications</a>
+                  <a class="nav-link" href="DispAll.jsp">Display All Applications</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="Bill1.jsp"></a>
@@ -72,23 +71,16 @@
               </ul>
             </div>
 
-            <!-- div class="navbar-nav">
-                <li class="nav-item border rounded-circle mx-2 search-icon">
-                    <i class="fas fa-search"></i>
-                </li>
-
-                <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    <i class="fas fa-cart-plus"></i>
-                </li>
-            </div> -->
+            
 
           </nav>
+          <hr>
     </div>
 </header>
 <main>
 
 
-<%
+	<%
 	
 	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");//http 1.1
 
@@ -96,44 +88,43 @@
 	
 	response.setHeader("Expires","0");//proxies
 
-//if(session.getAttribute("username")==null) 
-//{
-//	response.sendRedirect("LogInAdmin.jsp");
-//}
+if(session.getAttribute("username")==null) 
+{	response.sendRedirect("LogInAdmin.jsp");
+}
 %>
-<h1><center> Welcome Admin11 @${username} </center></h1>
+<h1><center> Welcome Admin @${username} </center></h1>
 </main>
-<form action="DispAllApplications" >
-<input type="submit" value="Show All" class="submitbt" >
-</form>
 
+<%! List<Application>lst; %>
 <%
-	
-	if(!session.isNew()){
-	List<Application>lst=(List<Application>)session.getAttribute("data");
-	session.invalidate();
+    
+    if((!session.isNew())&& !(session.getAttribute("data")==null)) {
+    lst=(List<Application>)session.getAttribute("data");
+    session.invalidate();
  %>
- 	<table border="1" align="center">
+    <table border="1" align="center">
   <tr>
-    <th><h1>Customer ID</h1></th>
-    <th><h1>BRANCH_NAME</h1></th>
-    <th><h1>ACCOUNT_TYPE</h1></th>
-    <th><h1>SURNAME</h1></th>
-    <th><h1>FIRSTNAME</h1></th>
-    <th><h1>MIDDLENAME</h1></th>
-    <th><h1>DATEOFBIRTH</h1></th>
-    <th><h1>EMAIL</h1></th>
-    <th><h1>MOBILE_NO</h1></th>
-    <th><h1>NATIONALITY</h1></th>
-    <th><h1>OCCUPATION</h1></th>
-    <th><h1>CITY</h1></th>
-    <th><h1>STATE</h1></th>
-    <th><h1>DISTRICT</h1></th>
-    <th><h1>PINCODE</h1></th>
-    <th><h1>AADHAR_NO</h1></th>
-    <th><h1>PAN_NO</h1></th>
+    <th>CustID</th>
+    <th>BRANCH_NAME</th>
+    <th>ACCOUNT_TYPE</th>
+    <th>SURNAME</th>
+    <th>FIRSTNAME</th>
+    <th>MIDDLENAME</th>
+    <th>DateOfBirth</th>
+    <th>EMAIL</th>
+    <th>MOBILE_NO</th>
+    <th>NATIONALITY</th>
+    <th>OCCUPATION</th>
+    <th>CITY</th>
+    <th>STATE</th>
+    <th>DISTRICT</th>
+    <th>PINCODE</th>
+    <th>AADHAR_NO</th>
+    <th>PAN_NO</th>
   </tr>
- <%	for(Application a:lst ){ %>
+ <% for(Application a:lst)
+ {
+ %>
 <tr>
 <td><%=a.getCust_id()%></td>
 <td><%=a.getBranch_number() %></td>
@@ -153,8 +144,34 @@
 <td><%=a.getAadhar_number() %></td>
 <td><%=a.getPan_number() %></td>
 </tr>
+
+<%}%>
 </table>
-<%}%>
-<%}%>
+<%}%> 
+<form action="DispAllApplications" >
+<div class="container">
+<input type="submit" value="Show All " class="submitbt" >
+</div>
+</form>
+
+
+
+<form action="VerifyAccountController" >
+<script >
+    	function isInputNumber(evt) {
+			var ch = String.fromCharCode(evt.which);
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+</script>
+<div class="container">
+<label for="CustId"><b>Enter Customer ID To be Verified</b></label>
+    <input type="text" name="customer_id" placeholder="Enter Customer ID To be Verified*" onkeypress="isInputNumber(event)" maxlength="10" required><br>
+    <input type="text" name="initial_balance" placeholder="Enter Initial Requested Balance in Rupees*" onkeypress="isInputNumber(event)" maxlength="10" required><br>
+    
+<input type="submit" value="Approve" class="submitbt" >
+</div>
+</form>
 </body>
 </html>

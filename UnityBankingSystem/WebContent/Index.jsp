@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+    <%@page errorPage="error.jsp" %>
+ <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -33,7 +34,7 @@
                             <a class="nav-link" href="CreateAccount.jsp">Apply Now</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Net Banking</a>
+                            <a class="nav-link" href="NetbankingRegistration.jsp">Apply for Net Banking</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -87,7 +88,7 @@
                         <div class="panel text-left">
                             <h1>THE BANK OF UNITY</h1>
                             <p class="pt-4">
-                                This is a paragraph
+                                One of the Words Leading bank
                             </p>
                         </div>
                     </div>
@@ -123,30 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="platform row">
-                <div class="col-md-6 col-sm-12 text-right">
-                    <div class="desktop shadow-lg">
-                        <div class="d-flex flex-row justify-content-center">
-                            <i class="fas fa-desktop fa-3x py-2 pr-3"></i>
-                            <div class="text text-left">
-                                <h3 class="pt-1 m-0">Desktop</h3>
-                                <p class="p-0 m-0">On website</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 text-left">
-                    <div class="desktop shadow-lg">
-                        <div class="d-flex flex-row justify-content-center">
-                            <i class="fas fa-mobile-alt fa-3x py-2 pr-3"></i>
-                            <div class="text text-left">
-                                <h3 class="pt-1 m-0">On Mobile</h3>
-                                <p class="p-0 m-0">On Play Store</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </section>
 
     </main>
@@ -179,16 +157,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-2 col-sm-12">
-                    <h4 class="text-light">Follow Us</h4>
-                    <p class="text-muted">Let us be social</p>
-                    <div class="column text-light">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </footer>

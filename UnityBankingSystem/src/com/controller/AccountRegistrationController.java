@@ -91,9 +91,11 @@ public class AccountRegistrationController extends HttpServlet {
 		BankDao rd = new BankDao();
 		PrintWriter pw = response.getWriter();
 		int i=rd.savedData(lst);
+		//int j=rd.saveAccount(lst2);
 		if(i>0)
 		{
-			pw.print("Application Submitted");
+			response.sendRedirect("VerifyOtp.jsp");
+			System.out.println("Application Submitted");
 		}
 		
 	}

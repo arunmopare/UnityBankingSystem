@@ -25,14 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 col-12">
-                <div class ="btn-group">
-                    <button class="btn border dropdown-toggle my-md-4 my-2 text-white"  data-toggle="dropdown-toggle" aria-haspopup="true"
-                    aria-expanded="false" 
-                    >INR</button>
-                    <div class="dropdown-menu text-white">
-                        <a href="#" class="dropdown-item">IND-INR</a>
-                    </div>
-                </div>
+               
             </div>
             <div class="col-md-4 col-12 text-center">
                 <h2 class="my-md-3 site-title text-white ">Unity Bank</h2>
@@ -69,17 +62,9 @@
               </ul>
             </div>
 
-            <div class="navbar-nav">
-                <li class="nav-item border rounded-circle mx-2 search-icon">
-                    <i class="fas fa-search"></i>
-                </li>
-
-                <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    <i class="fas fa-cart-plus"></i>
-                </li>
-            </div>
-
+            
           </nav>
+          <hr>
     </div>
 </header>
 
@@ -108,17 +93,17 @@
 	<br>
 	<br>
 	<label for="last_name"><b>Last Name</b></label>
-    <input type="text" name="last_name" placeholder="Enter Your Last Name*" required>
+    <input type="text" name="last_name" placeholder="Enter Your Last Name*" maxlength="10" required>
     
 	<label for="first_name"><b>First Name</b></label>
-	<input type="text" name="first_name" placeholder="Enter Your First Name*" required><br>
+	<input type="text" name="first_name" placeholder="Enter Your First Name*" maxlength="10" required><br>
 	
 	<label for="middle_name"><b>Middle Name</b></label>
-	<input type="text" name="middle_name" placeholder="Enter Your Middle Name*" required><br>
+	<input type="text" name="middle_name" placeholder="Enter Your Middle Name*" maxlength="10" required><br>
 	
 	<b>DOB</b>: <input type="date" name="birth_date"> <br>
 	<br>
-	<b>E-mail:</b> <input type="email" name="email_address" placeholder="Enter Your Email*" required><br>
+	<b>E-mail:</b> <input type="email" name="email_address" placeholder="Enter Your Email*" maxlength="50" required><br>
 	<br>
 	<label for="mobile_number"><b>Mobile Number</b></label>
     <input type="text" name="mobile_number" placeholder="Enter Your Mobile Number*" onkeypress="isInputNumber(event)" maxlength="10" required><br>
@@ -131,7 +116,7 @@
 		}
     </script>
     <label for="nationality"><b>Nationality</b></label>
-    <input type="text" name="nationality" placeholder="Enter Your nationality*" required><br>
+    <input type="text" name="nationality" placeholder="Enter Your nationality*"  required><br>
     
     <label for="occupation"><b>Occupation</b></label>
     <input type="text" name="occupation" placeholder="Enter Your Occupation*" required><br>
@@ -143,7 +128,7 @@
     <input type="text" name="city" placeholder="Enter Your City*" required><br>
     
     <label for="state"><b>State</b></label>
-    <input type="text" name="state" placeholder="Enter Your State*" required><br>
+    <input type="text" name="state" placeholder="Enter Your State*" maxlength="15" required><br>
     
     <label for="district"><b>District</b></label>
     <input type="text" name="district" placeholder="Enter Your District*" required><br>
@@ -165,5 +150,5 @@
     </div>
 	
 	</form>
-</body>
+</body> 
 </html>

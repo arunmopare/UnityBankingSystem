@@ -40,9 +40,9 @@ public class DispAllApplications extends HttpServlet {
 		System.out.println("log12");
 		HttpSession session = request.getSession(true);
 		System.out.println(lst);
-		//session.setAttribute("data", lst);
+		session.setAttribute("data", lst);
 		//session.setAttribute(name, value);
-		response.sendRedirect("AllAplications.jsp");
+		response.sendRedirect("DispAll.jsp");
 	}
 
 	/**

@@ -4,11 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
-
-<title>Unity Bank</title>
-<link rel="stylesheet" type="text/css" href="StyleForHeadFoot.css">
-
+<title>Apply For New Account</title>
 
 <!--bootstrap cdn-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,29 +15,25 @@
 <!--slider-->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<title>Admin Login</title>
+
+
+<link rel="stylesheet" type="text/css" href="StyleForHeadFoot.css">
+<title>Create Account</title>
 </head>
 <body>
 <header>
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 col-12">
-                <div class ="btn-group">
-                    <button class="btn border dropdown-toggle my-md-4 my-2 text-white"  data-toggle="dropdown-toggle" aria-haspopup="true"
-                    aria-expanded="false" 
-                    >INR</button>
-                    <div class="dropdown-menu text-white">
-                        <a href="#" class="dropdown-item">IND-INR</a>
-                    </div>
-                </div>
+               
             </div>
             <div class="col-md-4 col-12 text-center">
                 <h2 class="my-md-3 site-title text-white ">Unity Bank</h2>
             </div>
             <div class="col-md4 col-12 text-right">
                 <p class="my-md-4 header-links">
-                    <a href="Login.jsp"class="px-2"></a>
-                    <a href="Registration.jsp"class="px-1"></a>
+                    <a href="Login.jsp"class="px-2">Sign In</a>
+                    <a href="Registration.jsp"class="px-1">Sign Up</a>
 
                 </p>
             </div>
@@ -71,28 +63,45 @@
             </div>
 
             
-
           </nav>
           <hr>
     </div>
 </header>
 
-<form action="LoginController" method="post">
-<div class="container">
-	<h1>Login</h1>
-    <p>Please fill in this form to LogIn.</p>
+<form action="NetBankingRegistrationController" method="post">
+	<div class="container">
+	<h1>Apply For NetBanking Account</h1>
+    <p>Please Fill in The Required Fields to create an Unity Net-banking Online Account.</p>
     <hr>
-   	<label for="username"><b>User Name</b></label>
-	<input type="text" name="username" placeholder="Enter Admin Password" required><br>
 	
-	<label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-    <hr>
-    <div><center><input type="submit" value="Login" class="submitbt" ></center></div>
-   	 
-</div>
-
-</form>
-
-</body>
+	<label for="account_number"><b>Account Number</b></label>
+    <input type="text" name="account_number" placeholder="Enter Account Number Received by Mail*" onkeypress="isInputNumber(event)" maxlength="12" required><br>
+    
+	
+	<b>E-mail:</b> <input type="email" name="email_netbanking_registration" placeholder="Enter Your Email*" required><br>
+	<br>   
+    <script >
+    	function isInputNumber(evt) {
+			var ch = String.fromCharCode(evt.which);
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+    </script>
+    
+    <%if(!session.isNew()){
+    	session.getAttribute("account_not_exist");
+        session.getAttribute("invalid_email");
+     %>
+     <h6>${account_not_exist}</h6>
+     <h6>${invalid_email}</h6>
+        <%}%>
+     <hr>
+    <input type="submit" value="Send OTP" class="submitbt" > 
+	<hr>
+    </div>
+	
+	</form>
+	
+</body> 
 </html>
