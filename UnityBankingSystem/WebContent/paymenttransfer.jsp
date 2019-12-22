@@ -52,18 +52,14 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
+                  <a class="nav-link" href="AddBenifitiory.jsp">ADD  BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
+                    <a class="nav-link" href="paymenttransfer.jsp">PAYMENT TRANSFER</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
-                  </li>
-                  
               </ul>
             </div>
           </nav>
@@ -92,27 +88,18 @@ if(session.getAttribute("net_banking_username")==null)
 
 <div class="container" >
 <center>
-<table border="5" `>
-	<center>
-		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
-  </tr>
-  <tr>
-    <td>${currrent_accno}</td>
-    <td>${currrent_branchname}</td>
-    
-  </tr>
-  
-
-</table>
-</main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
+<button class="submitbt" onclick="window.location.href = 'AddBenifitiory.jsp';">Within Same Bank</button>
+<br>
+<button class="submitbt" onclick="window.location.href = '#';">Account other than Unity Bank</button>
 
 </center>
+
 </div>
+
+
+</main>
+
+
 </form>
 
 

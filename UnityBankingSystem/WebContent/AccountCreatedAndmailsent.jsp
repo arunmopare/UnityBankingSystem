@@ -19,7 +19,7 @@
 <!--slider-->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<title>Customer Dashboard</title>
+<title>Admin Dashboard</title>
 </head>
 <body>
 <header>
@@ -52,25 +52,25 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
+                  <a class="nav-link" href="DispAll.jsp">Display All Applications</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
+                  <a class="nav-link" href="Bill1.jsp"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
+                    <a class="nav-link" href="index.jsp"></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
-                  </li>
-                  
               </ul>
             </div>
+
+            
+
           </nav>
           <hr>
     </div>
 </header>
 <main>
+
 
 <%
 	
@@ -80,40 +80,18 @@
 	
 	response.setHeader("Expires","0");//proxies
 
-if(session.getAttribute("net_banking_username")==null) 
+if(session.getAttribute("username")==null) 
 {
-	response.sendRedirect("NetBankingLogin.jsp");
+	response.sendRedirect("LogInAdmin.jsp");
 }
 %>
-<h4><center> Welcome  @${net_banking_username} </center></h4>
-<br>
-<br>
-<hr>
-
-<div class="container" >
-<center>
-<table border="5" `>
-	<center>
-		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
-  </tr>
-  <tr>
-    <td>${currrent_accno}</td>
-    <td>${currrent_branchname}</td>
-    
-  </tr>
-  
-
-</table>
+<h1><center> Welcome Admin @${username} </center></h1>
 </main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
 
+<h1>
+<center>Successfully Created Account...!! And MAIL Has been Sent To Customer
 </center>
-</div>
-</form>
+</h1>
 
 
 </body>

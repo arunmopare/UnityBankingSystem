@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.BankDao;
+import com.model.AccountModel;
 import com.model.Net_login;
 
 
@@ -48,6 +49,32 @@ public class NetBankingLoginController extends HttpServlet {
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("net_banking_username",net_username);
+			//somehow get account number
+			String account_no=bd.account_noFromUsername(net_username);
+			//somehow send Account Details to nxt page
+			List<AccountModel>list_account=bd.getAllAccountdetails(account_no);
+			
+			AccountModel accountModel=(AccountModel)list_account.get(0);
+			
+			String currrent_accno=accountModel.getAccount_no();
+			String currrent_balance=accountModel.getAccount_balance();
+			String currrent_cust_id=accountModel.getCust_id();
+			String currrent_branchna=accountModel.getBranch_name();
+			String currrent_brcode=accountModel.getBranch_code();
+			String currrent_ifsc=accountModel.getIfsc_code();
+			String currrent_micr=accountModel.getMicr_code();
+			String currrent_accounttype=accountModel.getAccount_type();
+					
+			System.out.println(currrent_accounttype+"  :acctype");
+			session.setAttribute("currrent_accno",currrent_accno);
+			session.setAttribute("currrent_branchname",currrent_branchna);
+			session.setAttribute("currrent_accounttype",currrent_accounttype);
+			session.setAttribute("currrent_ifsc",currrent_ifsc);
+			session.setAttribute("currrent_brcode",currrent_brcode);
+			session.setAttribute("currrent_micr",currrent_micr);
+			
+			System.out.println(list_account);
+			session.setAttribute("list_of_accounts",list_account);
 			response.sendRedirect("NetBankingDashboard.jsp");			
 		}
 		else {

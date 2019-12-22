@@ -1,14 +1,14 @@
 package com.model;
 
 public class NetBankingprofile {
-	String net_email;
+	String user_id;
 	String account_number;
 	String password;
-	public String getNet_email() {
-		return net_email;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setNet_email(String net_email) {
-		this.net_email = net_email;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getAccount_number() {
 		return account_number;
@@ -22,6 +22,7 @@ public class NetBankingprofile {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 		
 	
 

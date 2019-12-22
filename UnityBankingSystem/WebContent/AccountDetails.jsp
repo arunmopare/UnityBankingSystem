@@ -58,12 +58,8 @@
                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
+                    <a class="nav-link" href="index.jsp"></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
-                  </li>
-                  
               </ul>
             </div>
           </nav>
@@ -85,9 +81,8 @@ if(session.getAttribute("net_banking_username")==null)
 	response.sendRedirect("NetBankingLogin.jsp");
 }
 %>
-<h4><center> Welcome  @${net_banking_username} </center></h4>
-<br>
-<br>
+<h4><center> Welcome  @${net_banking_username} <br>Your Account Details Are as follows  </center></h4>
+<br><br>
 <hr>
 
 <div class="container" >
@@ -95,21 +90,28 @@ if(session.getAttribute("net_banking_username")==null)
 <table border="5" `>
 	<center>
 		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
+    <th>Account Number</th>
+    <th>Account Type</th>
+    <th>Branch Name</th>
+    <th>Branch Code</th>
+    <th>IFSC Code</th>
+    <th>MICR Code</th>
   </tr>
   <tr>
     <td>${currrent_accno}</td>
+    <td>${currrent_accounttype}</td>
     <td>${currrent_branchname}</td>
-    
+    <td>${currrent_brcode}</td>
+    <td>${currrent_ifsc}</td>
+    <td>${currrent_micr}</td>
+
+
   </tr>
   
 
 </table>
 </main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
+
 
 </center>
 </div>

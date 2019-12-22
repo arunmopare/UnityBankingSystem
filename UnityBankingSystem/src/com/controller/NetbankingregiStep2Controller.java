@@ -27,6 +27,7 @@ public class NetbankingregiStep2Controller extends HttpServlet {
 		String s3=request.getParameter("otpforward11");
 		String s4=request.getParameter("netbankingpassword");
 		String s5=request.getParameter("netbankingpassword2");
+		String s6=request.getParameter("user_id");
 		
 		HttpSession session=request.getSession();
 		
@@ -35,6 +36,7 @@ public class NetbankingregiStep2Controller extends HttpServlet {
 		s1=s1.trim();
 		s4=s4.trim();
 		s5=s5.trim();
+		s6=s6.trim();
 		if(!s4.equals(s5)) {
 			session.setAttribute("repeated_password","Password Missmathched Please Enter the password again");
 			response.sendRedirect("NetbankingregiStep2.jsp");
@@ -56,7 +58,7 @@ public class NetbankingregiStep2Controller extends HttpServlet {
 		
 		NetBankingprofile bankingprofile =new NetBankingprofile();
 		bankingprofile.setAccount_number(s0);
-		bankingprofile.setNet_email(s1);
+		bankingprofile.setUser_id(s6);
 		bankingprofile.setPassword(s5);
 		
 		 List<NetBankingprofile> lst=new ArrayList<NetBankingprofile>();

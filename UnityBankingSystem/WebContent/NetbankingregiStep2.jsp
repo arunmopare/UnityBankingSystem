@@ -91,6 +91,10 @@
    	<label for="email"><b>Email</b></label>
 		<input type="email" name="email" placeholder="Please Enter Valid Email" value=" ${mail_netbanking}" required><br>
 	
+	<label for="userid"><b>Choose The USER-ID</b></label>
+		<input type="text" name="user_id" placeholder="Please Enter User Id Of your Choice" maxlength="50" required><br>
+	
+	
 	<label for="netbankingpassword"><b>Enter NEW Netbanking Password that you want to set </b></label>
 		<input type="password" name="netbankingpassword" placeholder="Please Enter Password"  required><br>
 	

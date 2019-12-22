@@ -88,7 +88,7 @@
 	
 	response.setHeader("Expires","0");//proxies
 
-if(session.getAttribute("username")==null) 
+if(session.getAttribute("username")==null)  	
 {	response.sendRedirect("LogInAdmin.jsp");
 }
 %>

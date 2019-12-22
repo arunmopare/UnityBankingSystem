@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 col-12">
-               
+                
             </div>
             <div class="col-md-4 col-12 text-center">
                 <h2 class="my-md-3 site-title text-white ">Unity Bank</h2>
@@ -52,10 +52,10 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
+                  <a class="nav-link" href="bnfcreated.jsp">ADD BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
+                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
@@ -63,14 +63,20 @@
                   <li class="nav-item">
                     <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
                   </li>
-                  
+                
+                <li class="nav-item">
+                    <a class="nav-link" href=""></a>
+                  </li>
               </ul>
             </div>
+
+
           </nav>
-          <hr>
+<hr>
     </div>
 </header>
 <main>
+
 
 <%
 	
@@ -85,35 +91,57 @@ if(session.getAttribute("net_banking_username")==null)
 	response.sendRedirect("NetBankingLogin.jsp");
 }
 %>
-<h4><center> Welcome  @${net_banking_username} </center></h4>
+<h1><center> Add New Intra Bank Beneficiary </center></h1>
 <br>
 <br>
 <hr>
-
-<div class="container" >
-<center>
-<table border="5" `>
-	<center>
-		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
-  </tr>
-  <tr>
-    <td>${currrent_accno}</td>
-    <td>${currrent_branchname}</td>
+<div class="container">
+	
+		<form action="AddNewBeneficiaryController" method="post">
+		
+		 <%if(!session.isNew()){
+    	session.getAttribute("invalid_details_of_account");
+        
+     %>
+     <h4>****${invalid_details_of_account}****</h4>
+     
+        <%}%>
+		
+		<label for="Name"><b>Name</b></label>
+    <input type="text" name="benfi_name" placeholder="Enter Name*" required><br>
+   	
+   	<label for="account_number"><b>Account Number</b></label>
+    <input type="text" name="account_number" placeholder="Enter Account Number *" onkeypress="isInputNumber(event)" maxlength="12"   required><br>
     
-  </tr>
-  
-
-</table>
-</main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
-
-</center>
+    <label for="account_number"><b>Account Number</b></label>
+    <input type="text" name="account_number2" placeholder="Retype Account Number*" onkeypress="isInputNumber(event)" maxlength="12"   required><br>
+    
+    <label for="ifsc_benf"><b>Enter IFSC code of Beneficiary</b></label>
+    <input type="text" name="ifsc_benf" placeholder="Enter IFSC code of Beneficiary*"  maxlength="11"   required><br>
+    
+    <script >
+    	function isInputNumber(evt) {
+			var ch = String.fromCharCode(evt.which);
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+    </script>
+     <label for="amount_limit"><b>Transfer Limit*(INR)(Max-1000000)</b></label>
+    <input type="text" name="amount_limit" placeholder="Type Transfer Limit*" onkeypress="isInputNumber(event)" maxlength="7"   required><br>
+     	
+    <input type="submit" value="submit" class="submitbt" > 
+		</form>
+		
+	
+	
+	
 </div>
-</form>
+
+
+</main>
+
+<form></form>
 
 
 </body>

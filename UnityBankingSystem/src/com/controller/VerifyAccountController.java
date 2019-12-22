@@ -45,7 +45,7 @@ public class VerifyAccountController extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		int k=bd.updateApproval(cust_id);
 		if(k>0) {
-			pw.print("Approved Successfully");
+			System.out.println("approved");
 		}
 		//get account number
 		
@@ -133,11 +133,11 @@ public class VerifyAccountController extends HttpServlet {
 					
 //				    session.setAttribute("mail", recipient);
 //				    session.setAttribute("otp", otpstr);
-					pw.print(" Mail sent Inserted");
-				    //response.sendRedirect(" VerifyOtpStep2.jsp");
+					System.out.println("Mail sent");
+				    response.sendRedirect("AccountCreatedAndmailsent.jsp");
 					}
 			 
-				pw.print(" Account Inserted");
+				System.out.println("account inserted");
 			}
 		 
 		//crateAccount()

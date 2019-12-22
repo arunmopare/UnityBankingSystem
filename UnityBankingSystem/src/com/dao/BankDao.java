@@ -9,9 +9,11 @@ import com.model.AdminLogin;
 //import org.graalvm.compiler.lir.amd64.AMD64Unary.RMOp;
 
 import com.model.Application;
+import com.model.Beneficiary;
 import com.model.Branch;
 import com.model.NetBankingprofile;
 import com.model.Net_login;
+import com.model.Transaction;
 
 import oracle.jdbc.util.Login;
 public class BankDao {
@@ -29,6 +31,184 @@ public Connection getConnection() {
 		e.printStackTrace();
 	}
 	return con;
+}
+
+
+//getTansactionTable
+
+public List<Transaction> getTansactionTable(String account_no){
+	Connection con =getConnection();
+	System.out.println(account_no);
+	List<Transaction> l1 = new ArrayList<Transaction>();
+	try {
+		System.out.println("errr1");
+		ps=con.prepareStatement("select * from transaction");
+		//where from_account=?
+		System.out.println("errr2");
+		//ps.setString(1, account_no);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			System.out.println("inside searching all applicants");
+			Transaction accm=new Transaction();
+			accm.setTransation_id(rs.getString(1));
+			accm.setFrom_account(rs.getString(2));
+			accm.setTo_account(rs.getString(3));
+			accm.setTransactionType(rs.getString(4));
+			accm.setTransactionDate(rs.getString(5));
+			accm.setTranactionStatus(rs.getString(6));
+			
+			l1.add(accm);
+			//con.close();
+			
+		}
+		con.close();
+		}	
+		catch(SQLException e)
+		{
+			System.out.println("Not found");
+			System.err.print(e.getMessage());
+			e.printStackTrace();
+			
+		}
+		return l1;
+
+
+	
+}
+
+
+
+
+
+public String getAccBal(String bnf_accountno) {
+	Connection con =getConnection();
+	
+	String bal="not set yet";
+	//String bl="blanck";
+	try {
+		//System.out.println("Searching Branch in Banck Dao");
+		ps=con.prepareStatement("select account_balance from account where account_no =?");
+		//.out.println("Created con statement ps for searching branch in bank dao");
+		ps.setString(1, bnf_accountno);
+		
+		
+		ResultSet rs1=ps.executeQuery();
+		while(rs1.next()) {
+			bal=rs1.getString(1);
+		}
+		con.close();
+		
+		
+	}catch (SQLException e) {
+			System.out.println("Not found");
+			System.err.print(e.getMessage());
+			e.printStackTrace();
+		}
+	
+	System.out.println(bal);
+
+	
+	return bal;
+	
+}
+
+
+
+
+
+
+
+//bnf_accountno
+
+public String bnf_accountno(String b_id) {
+	Connection con =getConnection();
+	String account_no="not set yet";
+	
+	try {
+		//System.out.println("Searching account_no in bankdao");
+		ps=con.prepareStatement("select to_account from beneficiary where b_id =?");
+		//System.out.println("Created con statement ps for searching email in bank dao");
+		ps.setString(1, b_id);
+		
+		
+		ResultSet rs1=ps.executeQuery();
+		while(rs1.next()) {
+			account_no=rs1.getString(1);
+		}
+		con.close();	
+}catch (SQLException e) {
+	System.out.println("Not found");
+	System.err.print(e.getMessage());
+	e.printStackTrace();
+}
+	System.out.println(account_no);
+	return account_no;
+	
+}
+
+public List<AccountModel> getAllAccountdetails(String account_no){
+	Connection con =getConnection();
+	List<AccountModel> l1 = new ArrayList<AccountModel>();
+	try {
+		System.out.println("errr1");
+		ps=con.prepareStatement("select * from account where account_no=?");
+		System.out.println("errr2");
+		ps.setString(1, account_no);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			System.out.println("inside searching all applicants");
+			AccountModel accm=new AccountModel();
+			accm.setAccount_no(rs.getString(1));
+			accm.setAccount_balance(rs.getString(2));
+			accm.setCust_id(rs.getString(3));
+			accm.setBranch_name(rs.getString(4));
+			accm.setBranch_code(rs.getString(5));
+			accm.setIfsc_code(rs.getString(6));
+			accm.setMicr_code(rs.getString(7));
+			accm.setAccount_type(rs.getString(8));
+			l1.add(accm);
+			//con.close();
+			
+		}
+		con.close();
+		}	
+		catch(SQLException e)
+		{
+			System.out.println("Not found");
+			System.err.print(e.getMessage());
+			e.printStackTrace();
+			
+		}
+		return l1;
+
+
+	
+}
+
+public String account_noFromUsername(String user_name) {
+	Connection con =getConnection();
+	String account_no="not set yet";
+	
+	try {
+		System.out.println("Searching account_no in bankdao");
+		ps=con.prepareStatement("select account_no from netbanking where username =?");
+		System.out.println("Created con statement ps for searching email in bank dao");
+		ps.setString(1, user_name);
+		
+		
+		ResultSet rs1=ps.executeQuery();
+		while(rs1.next()) {
+			account_no=rs1.getString(1);
+		}
+		con.close();	
+}catch (SQLException e) {
+	System.out.println("Not found");
+	System.err.print(e.getMessage());
+	e.printStackTrace();
+}
+	System.out.println(account_no);
+	return account_no;
+	
 }
 
 public boolean validatenetBankingLogin(List<Net_login> list) {
@@ -59,6 +239,39 @@ public boolean validatenetBankingLogin(List<Net_login> list) {
 	 
 }
 
+///checkAccountExists
+
+
+public boolean checkAccountExists(String ifsc,String acc_no){
+	getConnection();
+	boolean b=false;
+	
+	try
+	{
+		ps=con.prepareStatement("select ifsc_code from account where account_no=? AND ifsc_code=?");
+		ps.setString(1,acc_no);
+		ps.setString(2,ifsc);
+		ResultSet rs=ps.executeQuery();
+		if(rs.next()){
+			System.out.println("result set");
+			b=true;
+			
+		}
+		else
+		{
+			System.out.println("hii");
+			System.out.println("no result..");
+		}
+		//con.close();
+	}
+	catch(SQLException e) {
+		
+		System.err.print(e.getMessage());
+		e.printStackTrace();	}
+	return b;
+}
+
+
 public boolean validate(List<AdminLogin> lst){
 	getConnection();
 	boolean b=false;
@@ -85,6 +298,31 @@ public boolean validate(List<AdminLogin> lst){
 	}
 	return b;
 }
+
+
+//updatebaltransaction
+
+public int updatebaltransaction(int up_balance, String currAccount) {
+	Connection con =getConnection();
+	int i=0;
+	try {
+		//String mail=email;
+		ps=con.prepareStatement("update account set account_balance=? where account_no=?");
+		//ps.setString(1, mail);
+		ps.setInt(1, up_balance);
+		ps.setString(2, currAccount);
+		i=ps.executeUpdate();
+		System.out.println("Balance Updated");
+		con.close();
+	}catch (SQLException e) {
+		
+		System.err.print(e.getMessage());;
+		e.printStackTrace();
+	}
+	return i;
+}
+
+
 
 public int updateEmailApproval(String email) {
 	Connection con =getConnection();
@@ -121,6 +359,34 @@ public int updateApproval(String cust_id) {
 	return i;
 }
 
+
+
+public int CreateBeneficiary(List<Beneficiary>listnet) {
+	
+	int i=0;
+	Beneficiary beneficiary = listnet.get(0);
+	Connection con =getConnection();
+	try {
+		ps=con.prepareStatement("insert into beneficiary values(bnf_seq.nextval,?,?,?,?,?)");
+		ps.setString(1,beneficiary.getB_name());
+		ps.setString(2,beneficiary.getFrom_account());
+		ps.setString(3,beneficiary.getTo_account());
+		ps.setString(4,beneficiary.getTo_ifsc());
+		ps.setString(5,beneficiary.getB_limit());
+	
+		i=ps.executeUpdate();
+		System.out.println(i);
+		con.close();
+	} catch (SQLException e) {
+		System.err.print(e.getMessage());
+		e.printStackTrace();
+	}
+			
+	return i;
+}
+
+
+
 public int CreateNetBanking(List<NetBankingprofile>listnet) {
 	
 	int i=0;
@@ -129,7 +395,7 @@ public int CreateNetBanking(List<NetBankingprofile>listnet) {
 	try {
 		ps=con.prepareStatement("insert into netbanking values(?,?,?)");
 		ps.setString(1,bankingprofile.getAccount_number());
-		ps.setString(2,bankingprofile.getNet_email());
+		ps.setString(2,bankingprofile.getUser_id());
 		ps.setString(3,bankingprofile.getPassword());
 	
 		i=ps.executeUpdate();
@@ -166,6 +432,44 @@ public int addVerifiedAccount(List<AccountModel> listAccount) {
 			
 	return i;
 }
+
+
+public int insertIntoTransaction(List<Transaction> lst1){
+	Transaction r=lst1.get(0);
+	Connection con =getConnection();
+	System.out.println("test1"+con);
+	int i=0;
+	
+	try {
+		ps=con.prepareStatement("insert into transaction values(seq_transaction.nextval,?,?,?,sysdate,?)");
+		//ps1=con.prepareStatement("insert into account values(acc_seq.nextval,500,,?,?,null,null,?)");
+		int j=1;
+		ps.setString(1, r.getFrom_account());
+		ps.setString(2, r.getTo_account());
+		ps.setString(3, r.getTransactionType());
+		
+		ps.setString(4, r.getTranactionStatus());
+		
+		
+		
+		i=ps.executeUpdate();
+		System.out.println(i);
+		con.close();
+		
+		
+
+	} catch (SQLException e) {
+		
+		System.err.print(e.getMessage());
+		e.printStackTrace();
+	}
+	return i;
+}
+
+
+
+
+
 
 public int savedData(List<Application> lst1){
 	Application r=lst1.get(0);
@@ -377,6 +681,48 @@ public String accessAccount(String cust_id) {
 	return acc_no;
 	
 }
+
+	//searchdataBnf
+
+
+public List<Beneficiary> searchdataBnf(String acc_no){
+	Connection con =getConnection();
+	List<Beneficiary> l1 = new ArrayList<Beneficiary>();
+	try {
+		System.out.println("errr1");
+		ps=con.prepareStatement("select * from beneficiary where from_account=?");
+		System.out.println("errr2");
+		ps.setString(1, acc_no);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			System.out.println("inside searching all BNFS");
+			Beneficiary beneficiary=new Beneficiary();
+			beneficiary.setB_id(rs.getString(1));
+			beneficiary.setB_name(rs.getString(2));
+			beneficiary.setFrom_account(rs.getString(3));
+			beneficiary.setTo_account(rs.getString(4));
+			beneficiary.setTo_ifsc(rs.getString(5));
+			beneficiary.setB_limit(rs.getString(6));
+			
+			l1.add(beneficiary);
+			//con.close();
+			
+		}
+		con.close();
+		}	
+		catch(SQLException e)
+		{
+			System.out.println("Not found");
+			System.err.print(e.getMessage());
+			e.printStackTrace();
+			
+		}
+	return l1;
+	
+}
+
+
+
 
 
 public List<Application> searchData(){

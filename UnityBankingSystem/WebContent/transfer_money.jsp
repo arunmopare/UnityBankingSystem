@@ -1,3 +1,5 @@
+<%@page import="com.model.Beneficiary"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 col-12">
-               
+                
             </div>
             <div class="col-md-4 col-12 text-center">
                 <h2 class="my-md-3 site-title text-white ">Unity Bank</h2>
@@ -52,25 +54,24 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
+                  <a class="nav-link" href="bnfcreated.jsp">ADD BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
+                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
+                    <a class="nav-link" href=""></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
-                  </li>
-                  
               </ul>
             </div>
+
+
           </nav>
-          <hr>
+<hr>
     </div>
 </header>
 <main>
+
 
 <%
 	
@@ -85,35 +86,97 @@ if(session.getAttribute("net_banking_username")==null)
 	response.sendRedirect("NetBankingLogin.jsp");
 }
 %>
-<h4><center> Welcome  @${net_banking_username} </center></h4>
 <br>
 <br>
 <hr>
-
-<div class="container" >
-<center>
-<table border="5" `>
-	<center>
-		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
-  </tr>
-  <tr>
-    <td>${currrent_accno}</td>
-    <td>${currrent_branchname}</td>
+<div class="container">
+<!-- bnfdata -->
+<h3><center>List Of Beneficiary's</center></h3>
+<hr>
+<br>
+<br>
+<%! List<Beneficiary>lst; %>
+<%
     
+    if((!session.isNew())&& !(session.getAttribute("bnfdata")==null)) {
+    lst=(List<Beneficiary>)session.getAttribute("bnfdata");
+   // session.invalidate();
+ %>
+    <table border="1" align="center">
+  <tr>
+    <th>Beneficiary ID</th>
+    <th>Beneficiary Name</th>
+    <th>From Account Number</th>
+    <th>Beneficiary Account Number</th>
+    <th>Beneficiary IFSC code</th>
+    <th>Beneficiary Amount Limit</th>
   </tr>
-  
+ <% for(Beneficiary b:lst)
+ {
+ %>
+<tr>
+<td><%=b.getB_id() %></td>
+<td><%=b.getB_name() %></td>
+<td><%=b.getFrom_account()%></td>
+<td><%=b.getTo_account()%></td>
+<td><%=b.getTo_ifsc() %></td>
+<td><%=b.getB_limit() %></td>
+</tr>
 
+<%}%>
 </table>
-</main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
+<%}%> 
+<br><br><hr>
 
-</center>
+	<center>
+		<form action="ShowAllBnfTransferCon" method="post">
+	
+	<INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
+	<input type="submit" value="Show all Beneficieries" class="submitbt">
+		</form>
+		</center>
+	<h4>${Insufficient_Balance}</h4>
+	<h4>${Transaction_limit_Exceeded}</h4>
+	<form action="TransferMoney" method="post">
+	<INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
+	<label for="BeneficiaryNumber"><b>Beneficiary No.</b></label>
+    <input type="text" name="bnf_number_transfer" placeholder="Enter Beneficiary Number*" onkeypress="isInputNumber(event)" maxlength="10" required><br>
+    <script >
+    	function isInputNumber(evt) {
+			var ch = String.fromCharCode(evt.which);
+			if(!(/[0-9]/.test(ch))){
+				evt.preventDefault();
+			}
+		}
+    </script>
+    <br>
+    <hr>
+    
+    <b>Select Type Of Transaction:-</b>	
+	<select name="transaction_type" class="forsel">
+    <option value="QUICKTRANSFER">QUICKTRANSFER</option>
+    <option value="NEFT">NEFT</option>
+    <option value="IMPS">IMPS</option>
+    
+  </select>
+  <br>
+  <br>
+  <hr>
+  <label for="tr_amount"><b>Amount to be Transferred *(INR)</b></label>
+    <input type="text" name="tr_amount" placeholder="Amount to be Transferred *(INR)" onkeypress="isInputNumber(event)" maxlength="7"   required><br>
+     
+
+	<input type="submit" value="Transfer Money" class="submitbt">
+		</form>	
+	
+	
+	
 </div>
-</form>
+
+
+</main>
+
+
 
 
 </body>

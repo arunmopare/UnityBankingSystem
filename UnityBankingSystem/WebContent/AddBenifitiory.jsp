@@ -52,26 +52,17 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AddBenifitiory.jsp">Add Benifitiory</a>
+                  <a class="nav-link" href="bnfcreated.jsp">ADD BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Bill1.jsp"></a>
+                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp"></a>
+                    <a class="nav-link" href=""></a>
                   </li>
               </ul>
             </div>
 
-            <!-- div class="navbar-nav">
-                <li class="nav-item border rounded-circle mx-2 search-icon">
-                    <i class="fas fa-search"></i>
-                </li>
-
-                <li class="nav-item border rounded-circle mx-2 basket-icon">
-                    <i class="fas fa-cart-plus"></i>
-                </li>
-            </div> -->
 
           </nav>
 <hr>
@@ -82,18 +73,31 @@
 
 <%
 	
-//	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");//http 1.1
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");//http 1.1
 
-	//response.setHeader("Pragma","no-cache");//http 1.1
+	response.setHeader("Pragma","no-cache");//http 1.1
 	
-//	response.setHeader("Expires","0");//proxies
+	response.setHeader("Expires","0");//proxies
 
-//if(session.getAttribute("username")==null) 
-//{
-	//response.sendRedirect("LogInAdmin.jsp");
-//}
+if(session.getAttribute("net_banking_username")==null) 
+{
+	response.sendRedirect("NetBankingLogin.jsp");
+}
 %>
-<h1><center> Add Benifitiory </center></h1>
+<h1><center> Add Beneficiary </center></h1>
+<h5><center>Please add an Intra Bank Beneficiary and then approve it. you may do transaction after the  beneficiary is activated</center></h5> 
+<br>
+<br>
+<hr>
+<div class="container">
+	<center>
+		<button class="submitbt" onclick="window.location.href = 'AddNewBeneficiary.jsp';">Add New Beneficiary</button>
+		
+	</center>
+	
+	
+</div>
+
 
 </main>
 

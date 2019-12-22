@@ -1,3 +1,5 @@
+<%@page import="com.model.Transaction"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -85,35 +87,61 @@ if(session.getAttribute("net_banking_username")==null)
 	response.sendRedirect("NetBankingLogin.jsp");
 }
 %>
+<h1><center>Under Development</center></h1>
 <h4><center> Welcome  @${net_banking_username} </center></h4>
 <br>
 <br>
 <hr>
 
-<div class="container" >
-<center>
-<table border="5" `>
-	<center>
-		<tr>
-    <th>Account NO</th>
-    <th>Branch</th>
-   
-  </tr>
-  <tr>
-    <td>${currrent_accno}</td>
-    <td>${currrent_branchname}</td>
-    
-  </tr>
-  
-
-</table>
 </main>
-<form action="NetbankingLogoutController">
-<div class="admindivbtn" ><center><input type="submit" value="Logout" class="submitbt" > </center></div>
+<div class="container">
+<center>
+<form action="TransactionHistory" method="post">
+<INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
+<input type="submit" value="Show all History" class="submitbt">
+</form>
+
+
+<br><br><hr>
+
 
 </center>
+
 </div>
-</form>
+
+<%! List<Transaction>list; %>
+<%
+    
+    if((!session.isNew())&& !(session.getAttribute("Listhistory")==null)) {
+    	 list=(List<Transaction>)session.getAttribute("Listhistory");
+   // session.invalidate();
+ %>
+    <table border="1" align="center">
+  <tr>
+    <th>Transaction History ID</th>
+    <th>From Account Number</th>
+    <th>to Account Number</th>
+    <th>Transaction Type</th>
+    <th>Transaction Date</th>
+    <th>Transaction Status</th>
+  </tr>
+ <% for(Transaction b:list)
+ {
+ %>
+<tr>
+<td><%=b.getTransation_id()%></td>
+<td><%=b.getFrom_account() %></td>
+<td><%=b.getTo_account()%></td>
+<td><%=b.getTransactionType()%></td>
+<td><%=b.getTransactionDate() %></td>
+<td><%=b.getTranactionStatus() %></td>
+</tr>
+
+<%}%>
+</table>
+<%}%> 
+
+
 
 
 </body>

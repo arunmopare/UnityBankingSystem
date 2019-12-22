@@ -44,7 +44,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#"></a>
-                                <a class="dropdown-item" href="#">Net Banking Login</a>
+                                <a class="dropdown-item" href="NetBankingLogin.jsp">Net Banking Login</a>
                                 <a class="dropdown-item" href="LogInAdmin.jsp">Admin Login</a>
                             </div>
                         </li>
