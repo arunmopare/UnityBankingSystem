@@ -67,7 +67,7 @@ try {
     session.setAttribute("mail", recipient);
     session.setAttribute("otp", otpstr);
     
-    response.sendRedirect(" VerifyOtpStep2.jsp");
+    response.sendRedirect("VerifyOtpStep2.jsp");
 	}
 }
 }

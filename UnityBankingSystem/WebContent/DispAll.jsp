@@ -2,6 +2,7 @@
 <%@page import="com.model.Application"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,8 +154,6 @@ if(session.getAttribute("username")==null)
 <input type="submit" value="Show All " class="submitbt" >
 </div>
 </form>
-
-
 
 <form action="VerifyAccountController" >
 <script >

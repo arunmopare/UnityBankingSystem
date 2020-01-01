@@ -52,10 +52,10 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="bnfcreated.jsp">ADD BENEFICIARY</a>
+                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
+                  <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
@@ -63,7 +63,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
                   </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href=""></a>
                   </li>
@@ -113,6 +112,7 @@ if(session.getAttribute("net_banking_username")==null)
    	<label for="account_number"><b>Account Number</b></label>
     <input type="text" name="account_number" placeholder="Enter Account Number *" onkeypress="isInputNumber(event)" maxlength="12"   required><br>
     
+    <INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
     <label for="account_number"><b>Account Number</b></label>
     <input type="text" name="account_number2" placeholder="Retype Account Number*" onkeypress="isInputNumber(event)" maxlength="12"   required><br>
     

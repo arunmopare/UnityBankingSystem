@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,26 +96,12 @@ if(session.getAttribute("net_banking_username")==null)
 
 </main>
 <div class="container">
-<center>
-<form action="TransactionHistory" method="post">
-<INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
-<input type="submit" value="Show all History" class="submitbt">
-</form>
 
-
-<br><br><hr>
-
-
-</center>
-
-</div>
-
-<%! List<Transaction>list; %>
-<%
-    
-    if((!session.isNew())&& !(session.getAttribute("Listhistory")==null)) {
-    	 list=(List<Transaction>)session.getAttribute("Listhistory");
-   // session.invalidate();
+<%!List<Transaction>lst; %>
+<%  if((!session.isNew())&& !(session.getAttribute("Listhistory")==null)) {
+    	 lst=(List<Transaction>)session.getAttribute("Listhistory");
+    	 System.out.println(lst);
+   
  %>
     <table border="1" align="center">
   <tr>
@@ -125,24 +112,28 @@ if(session.getAttribute("net_banking_username")==null)
     <th>Transaction Date</th>
     <th>Transaction Status</th>
   </tr>
- <% for(Transaction b:list)
+ <% for(Transaction tra:lst)
  {
  %>
 <tr>
-<td><%=b.getTransation_id()%></td>
-<td><%=b.getFrom_account() %></td>
-<td><%=b.getTo_account()%></td>
-<td><%=b.getTransactionType()%></td>
-<td><%=b.getTransactionDate() %></td>
-<td><%=b.getTranactionStatus() %></td>
+<td><%=tra.getTransation_id()%></td>
+<td><%=tra.getFrom_account() %></td>
+<td><%=tra.getTo_account()%></td>
+<td><%=tra.getTransactionType()%></td>
+<td><%=tra.getTransactionDate() %></td>
+<td><%=tra.getTranactionStatus() %></td>
 </tr>
 
 <%}%>
 </table>
 <%}%> 
 
-
-
+<form action="TransactionHistory" method="post">
+<INPUT TYPE="HIDDEN" NAME="curr_account" value="${currrent_accno}" >
+<input type="submit" value="Show all History" class="submitbt">
+</form>
+<br><br><hr>
+</div>
 
 </body>
 </html>

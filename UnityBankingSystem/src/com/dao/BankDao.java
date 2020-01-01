@@ -39,26 +39,26 @@ public Connection getConnection() {
 public List<Transaction> getTansactionTable(String account_no){
 	Connection con =getConnection();
 	System.out.println(account_no);
-	List<Transaction> l1 = new ArrayList<Transaction>();
+	List<Transaction> lst = new ArrayList<Transaction>();
 	try {
 		System.out.println("errr1");
-		ps=con.prepareStatement("select * from transaction");
+		ps=con.prepareStatement("select * from transaction where from_account=?");
 		//where from_account=?
 		System.out.println("errr2");
-		//ps.setString(1, account_no);
-		ResultSet rs= ps.executeQuery();
-		while(rs.next()) {
+		ps.setString(1, account_no);
+		ResultSet rs1= ps.executeQuery();
+		while(rs1.next()) {
 			System.out.println("inside searching all applicants");
 			Transaction accm=new Transaction();
-			accm.setTransation_id(rs.getString(1));
-			accm.setFrom_account(rs.getString(2));
-			accm.setTo_account(rs.getString(3));
-			accm.setTransactionType(rs.getString(4));
-			accm.setTransactionDate(rs.getString(5));
-			accm.setTranactionStatus(rs.getString(6));
+			accm.setTransation_id(rs1.getString(1));
+			accm.setFrom_account(rs1.getString(2));
+			accm.setTo_account(rs1.getString(3));
+			accm.setTransactionType(rs1.getString(4));
+			accm.setTransactionDate(rs1.getString(5));
+			accm.setTranactionStatus(rs1.getString(6));
 			
-			l1.add(accm);
-			//con.close();
+			lst.add(accm);
+			con.close();
 			
 		}
 		con.close();
@@ -70,10 +70,7 @@ public List<Transaction> getTansactionTable(String account_no){
 			e.printStackTrace();
 			
 		}
-		return l1;
-
-
-	
+		return lst;
 }
 
 

@@ -36,7 +36,7 @@ public class EmailUtility {
         	public PasswordAuthentication getPasswordAuthentication() {
         
         	 
-        	        return new PasswordAuthentication("devilmops@gmail.com", "Arun@9767781162@mopswami");
+        	        return new PasswordAuthentication("", "");
         	    }
 
         	    	};

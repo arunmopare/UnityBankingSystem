@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,9 +77,9 @@
 	<b>Select Account Type:-</b>	
 	<select name="account_type" class="forsel">
     <option value="Saving">Saving</option>
+    <option value="Current">Current</option>
     <option value="Salary">Salary</option>
-    <option value="Credit">Credit</option>
-    <option value="Debt">Debt</option>
+    
   </select>
 	<br>
 	<br>
@@ -139,7 +140,7 @@
     <label for="aadhar"><b>AADHAR</b></label>
     <input type="text" name="aadhar_number" placeholder="Enter Your AADHAR NUMBER*" onkeypress="isInputNumber(event)" maxlength="12" required><br>
     
-    <label for="pan"><b>PAN</b></label>
+    <label for=0"pan"><b>PAN</b></label>
     <input type="text" name="pan_number" placeholder="Enter Your PAN NUMBER*" maxlength="10" required><br>
 
     <hr>

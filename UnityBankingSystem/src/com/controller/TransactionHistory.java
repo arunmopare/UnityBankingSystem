@@ -24,6 +24,7 @@ public class TransactionHistory extends HttpServlet {
 		HttpSession session= request.getSession();
 		BankDao bd= new BankDao();
 		List<Transaction>lst= bd.getTansactionTable(s1);
+		System.out.println(lst);
 		request.setAttribute("Listhistory",lst);
 		response.sendRedirect("tranHistory.jsp");
 	}

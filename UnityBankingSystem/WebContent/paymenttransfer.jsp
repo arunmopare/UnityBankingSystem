@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,13 +53,16 @@
                   <a class="nav-link" href="Index.jsp">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AddBenifitiory.jsp">ADD  BENEFICIARY</a>
+                  <a class="nav-link" href="bnfcreated.jsp">ADD  BENEFICIARY</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AccountDetails.jsp">SHOW ACCOUNT DETAILS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="paymenttransfer.jsp">PAYMENT TRANSFER</a>
+                    <a class="nav-link" href="transfer_money.jsp">PAYMENT TRANSFER</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="tranHistory.jsp">Transaction History</a>
                   </li>
               </ul>
             </div>
